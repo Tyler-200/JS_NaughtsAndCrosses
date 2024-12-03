@@ -14,12 +14,12 @@ const winnerMessage = () => `Player ${currentPlayer} has won!`;
 const drawMessage = () => `Game ended in a draw!`;
 const currentPlayerMessage = () => `It's ${currentPlayer}'s turn`;
 
-document.querySelectorAll('.cell').forEach(cell => cell.addEventListener('click', clickHandeler));
+document.querySelectorAll('.cell').forEach(cell => cell.addEventListener('click', clickHandler));
 document.querySelector('.restartBtn').addEventListener('click', restartGame);
 
 statusDisplay.innerHTML = currentPlayerMessage();
 
-function clickHandeler(clickedCellEvent){
+function clickHandler(clickedCellEvent){
     const selectedCell = clickedCellEvent.target;
     const cellIndex = parseInt(selectedCell.getAttribute('data-index'));
 
@@ -28,7 +28,7 @@ function clickHandeler(clickedCellEvent){
     }
 
     cellPlayed(selectedCell, cellIndex);
-    handleRes();
+    handleRes(); 
 }
 
 function cellPlayed(cell, index){
@@ -56,9 +56,10 @@ function handleRes(){
         active = false;
         return;
     }
-    let draw = !gameState.includes("")
-    if (draw){
+    if (!gameState.includes("")){
         statusDisplay.innerHTML = drawMessage();
+        active = false;
+        return;
     }
     changePlayer();
 }
