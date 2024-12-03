@@ -16,6 +16,9 @@ section{
 .title{
     padding-top: 20px;
 }
+.modeTitle{
+    font-size: 1rem;
+}
 .game{
     display: grid;
     grid-template-columns: repeat(3, auto);
